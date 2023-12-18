@@ -27,11 +27,14 @@ function App() {
         <li style={{ alignSelf: currentSelfAlignOption }}>World</li>
       </ul>
       <p>
-        justify-content: <code>{currentJustifyOption}</code>{" "}
+        justify-content: {currentAxisOption === "row" ? "(row)" : "(columnn)"}{" "}
+        <code>{currentJustifyOption}</code>{" "}
         {currentJustifyOption === "flex-start" && "(Default)"}
       </p>
       <p>
-        align-items: <code>{currentAlignOption}</code>{" "}
+        align-items:{" "}
+        {currentAxisOption === "column" ? "(row 1D)" : "(columnn 1D)"}{" "}
+        <code>{currentAlignOption}</code>{" "}
         {currentAlignOption === "stretch" && "(Default)"}
       </p>
       <p>
@@ -39,38 +42,54 @@ function App() {
         {currentSelfAlignOption === "stretch" && "(Default)"}
       </p>
 
-      <select
-        value={currentJustifyOption}
-        onChange={(e) => setCurrentJustifyOption(e.target.value)}
-      >
-        <option value="flex-start">flex-start (Default)</option>
-        <option value="flex-end">flex-end</option>
-        <option value="center">center</option>
-        <option value="space-between">space-between</option>
-        <option value="space-around">space-around</option>
-        <option value="space-evenly">space-evenly</option>
-      </select>
+      <div className="dropdown_wrapper">
+        <label>
+          justify-content: {currentAxisOption === "row" ? "(row)" : "(columnn)"}
+          <select
+            value={currentJustifyOption}
+            onChange={(e) => setCurrentJustifyOption(e.target.value)}
+          >
+            <option value="flex-start">flex-start (Default)</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+          </select>
+        </label>
 
-      <select onChange={(e) => setCurrentAlignOption(e.target.value)}>
-        <option value="stretch">stretch (Default)</option>
-        <option value="flex-start">flex-start</option>
-        <option value="flex-end">flex-end</option>
-        <option value="center">center</option>
-        <option value="baseline">baseline</option>
-      </select>
+        <label>
+          align-items:{" "}
+          {currentAxisOption === "column" ? "(row 1D)" : "(columnn 1D)"}
+          <select onChange={(e) => setCurrentAlignOption(e.target.value)}>
+            <option value="stretch">stretch (Default)</option>
+            <option value="flex-start">flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="baseline">baseline</option>
+          </select>
+        </label>
 
-      <select onChange={(e) => setCurrentAxisOption(e.target.value)}>
-        <option value="row">row (Default)</option>
-        <option value="column">column</option>
-      </select>
+        <label>
+          flex-direction
+          <select onChange={(e) => setCurrentAxisOption(e.target.value)}>
+            <option value="row">row (Default)</option>
+            <option value="column">column</option>
+          </select>
+        </label>
 
-      <select onChange={(e) => setCurrentSelfAlignOption(e.target.value)}>
-        <option value="stretch">stretch (Default)</option>
-        <option value="flex-start">flex-start</option>
-        <option value="flex-end">flex-end</option>
-        <option value="center">center</option>
-        <option value="baseline">baseline</option>
-      </select>
+        <label>
+          self-align
+          <select onChange={(e) => setCurrentSelfAlignOption(e.target.value)}>
+            <option value="stretch">stretch (Default)</option>
+            <option value="flex-start">flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="baseline">baseline</option>
+          </select>
+        </label>
+      </div>
+      <p className="small_text">*align-content does not really make sense in flex as its a 1D layout <br /> so align-items is treated like align-content would be</p>
     </>
   );
 }
