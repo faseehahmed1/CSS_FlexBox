@@ -89,7 +89,7 @@ function App() {
           </select>
         </label>
       </div>
-      <p className="small_text">*align-content does not really make sense in flex as its a 1D layout <br /> so align-items is treated like align-content would be</p>
+      <p className="small_text">*align-content does not really make sense in flex as its a 1D layout <br /> so align-items is treated like align-content would be. <br /> Nor does justify-items make sense as justifty-content aligns items in main axis (col-direction)</p>
     </>
   );
 }
