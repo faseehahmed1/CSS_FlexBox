@@ -38,7 +38,7 @@ function App() {
         {currentAlignOption === "stretch" && "(Default)"}
       </p>
       <p>
-        self-align (last-li): <code>{currentSelfAlignOption}</code>{" "}
+      align-self (last-li): <code>{currentSelfAlignOption}</code>{" "}
         {currentSelfAlignOption === "stretch" && "(Default)"}
       </p>
 
@@ -79,7 +79,7 @@ function App() {
         </label>
 
         <label>
-          self-align
+        align-self
           <select onChange={(e) => setCurrentSelfAlignOption(e.target.value)}>
             <option value="stretch">stretch (Default)</option>
             <option value="flex-start">flex-start</option>
